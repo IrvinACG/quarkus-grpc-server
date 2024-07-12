@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.iacg.grcp.domain.address";
+option java_outer_classname = "AddressGrpcProto";
+
+service AddressService{
+
+    rpc findByUserId(Id) returns (ReplyAddress);
+
+    rpc findAll(Empty) returns (ReplyListAddress);
+
+}
+
+message Id{
+    int64 id = 1;
+}
+
+message ReplyAddress{
+    int64 id = 1;
+    string number = 2;
+    string street = 3;
+    string city = 4;
+    int64 userId = 5;
+}
+
+message ReplyListAddress{
+    repeated ReplyAddress addresses = 1;
+}
+
+message Empty{}
